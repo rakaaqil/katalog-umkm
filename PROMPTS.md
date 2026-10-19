@@ -120,7 +120,21 @@ Baca AGENTS.md aturan keamanan nomor 3 dan 4, dan docs/user-stories.md bagian US
 Buat file proxy.js di root proyek (Next.js 16). Semua rute /admin kecuali /admin/login wajib login dengan Supabase Auth; kalau belum login, alihkan ke /admin/login. Pastikan juga setiap Server Action yang mengubah data memeriksa login di server. Hapus CatatanBelumAktif dari halaman /admin.
 
 **Hasil:**
-
+Uji proteksi halaman tanpa login:
+Buka browser dalam mode Incognito/Private (atau pastikan sudah keluar/logout).
+Buka langsung URL http://localhost:3000/admin
+ atau http://localhost:3000/admin/password
+.
+Pastikan halaman otomatis dialihkan (redirect) ke http://localhost:3000/admin/login
+.
+Uji akses setelah login:
+Masuk melalui http://localhost:3000/admin/login
+ dengan akun admin Supabase.
+Setelah berhasil login dan diarahkan ke http://localhost:3000/admin
+, pastikan halaman admin dapat diakses dan banner catatan belum aktif sudah tidak ada.
+Coba akses kembali http://localhost:3000/admin/login
+, pastikan otomatis diarahkan kembali ke http://localhost:3000/admin
+ karena sudah login.
 
 **Perbaikan:**
 
