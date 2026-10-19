@@ -31,13 +31,28 @@ Baca docs/user-stories.md bagian US-02.
 Ubah app/produk/[id]/page.jsx supaya mengambil satu produk dari tabel "produk" di Supabase berdasarkan id di URL, di sisi server, memakai koneksi Supabase yang sudah dibuat di lib/supabase. Kalau produk tidak ditemukan, panggil notFound(). Jangan ubah tampilannya. Hapus CatatanBelumAktif dari halaman ini, tapi biarkan tombol WhatsApp.
 
 **Hasil:**
-
+Jalankan server lokal:
+powershell
+npm run dev
+Uji produk yang ada:
+Buka halaman katalog di http://localhost:3000
+ lalu klik salah satu kartu produk (misalnya produk ID 1 ke http://localhost:3000/produk/1
+).
+Pastikan detail foto, kategori, nama, harga (format Rupiah), deskripsi, dan tombol WhatsApp muncul dari database Supabase, serta tidak ada lagi kotak catatan belum aktif.
+Uji produk yang tidak ada (404):
+Buka URL produk dengan ID yang tidak ada di database, misalnya http://localhost:3000/produk/9999
+ atau http://localhost:3000/produk/abc
+.
+Pastikan halaman menampilkan tampilan 404 ("Halaman tidak ditemukan").
 
 **Perbaikan:**
 
 ## US-03 Pesan via WhatsApp
 
 **Prompt:**
+Baca docs/rancangan-teknis.md bagian "Pesan WhatsApp (US-03)".
+
+Ubah components/TombolWhatsApp.jsx menjadi tautan yang membuka https://wa.me/ ke nomor di lib/toko.js, dengan pesan otomatis berisi nama dan harga produk dalam format rupiah. Pesan di-encode dengan encodeURIComponent dan dibuka di tab baru. Pertahankan tampilan tombolnya. Hapus CatatanBelumAktif yang menyebut US-03 di halaman detail produk.
 
 **Hasil:**
 
