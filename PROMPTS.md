@@ -93,14 +93,34 @@ Baca docs/user-stories.md bagian US-05.
 Buat Server Action ganti password di app/admin/actions.js untuk admin yang sedang login, memakai Supabase Auth. Validasi di server: password baru minimal 8 karakter dan harus sama dengan konfirmasi. Tampilkan pesan berhasil atau pesan error yang jelas di halaman. Sambungkan ke form di app/admin/password/page.jsx tanpa mengubah tampilannya. Hapus CatatanBelumAktif dari halaman ini.
 
 **Hasil:**
+Pastikan sudah login sebagai admin (bisa lewat http://localhost:3000/admin/login
+).
+Buka halaman ganti password di http://localhost:3000/admin/password
+.
+Uji validasi error (password tidak sama):
+Masukkan password baru minimal 8 karakter (misal: passwordBaru123).
+Masukkan konfirmasi yang berbeda (misal: passwordBeda123).
+Klik "Simpan password".
+Pastikan muncul pesan error: "Password baru dan konfirmasi password tidak sama.".
+Uji validasi error (kurang dari 8 karakter):
+Masukkan password baru kurang dari 8 karakter (misal: abc dan abc).
+Pastikan muncul pesan error validasi minimal 8 karakter.
+Uji ganti password berhasil:
+Masukkan password baru yang valid (minimal 8 karakter) dan sama dengan konfirmasinya.
+Klik "Simpan password".
+Pastikan muncul notifikasi hijau: "Password berhasil diganti.".
 
 **Perbaikan:**
 
 ## US-06 Proteksi halaman admin
 
 **Prompt:**
+Baca AGENTS.md aturan keamanan nomor 3 dan 4, dan docs/user-stories.md bagian US-06.
+
+Buat file proxy.js di root proyek (Next.js 16). Semua rute /admin kecuali /admin/login wajib login dengan Supabase Auth; kalau belum login, alihkan ke /admin/login. Pastikan juga setiap Server Action yang mengubah data memeriksa login di server. Hapus CatatanBelumAktif dari halaman /admin.
 
 **Hasil:**
+
 
 **Perbaikan:**
 
