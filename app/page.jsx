@@ -1,4 +1,5 @@
 import KatalogFilter from "@/components/KatalogFilter";
+import PwaInstallPrompt from "@/components/PwaInstallPrompt";
 import { toko } from "@/lib/toko";
 import { createClient } from "@/lib/supabase/server";
 
@@ -29,6 +30,7 @@ export default async function HalamanKatalog() {
 
   return (
     <>
+      <PwaInstallPrompt />
       <section className="py-10 sm:py-14">
         <h1 className="max-w-2xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
           {toko.nama}
