@@ -67,12 +67,30 @@ Baca AGENTS.md bagian aturan keamanan dan docs/user-stories.md bagian US-04.
 Buat login admin memakai Supabase Auth (email dan password) dengan @supabase/ssr dan cookie, memakai SUPABASE_URL dan SUPABASE_PUBLISHABLE_KEY. Login diproses dengan Server Action di app/admin/actions.js dan disambungkan ke form di app/admin/login/page.jsx. Login berhasil diarahkan ke /admin; login gagal menampilkan pesan error yang jelas di halaman login. Buat juga tombol "Keluar" di components/NavAdmin.jsx berfungsi: mengakhiri sesi lalu kembali ke /admin/login. Jangan ubah tampilan. Hapus CatatanBelumAktif dari halaman login.
 
 **Hasil:**
+Uji login gagal (kredensial salah):
+Buka http://localhost:3000/admin/login
+.
+Masukkan email sembarang (misal: salah@toko.com) dan password apa pun.
+Klik "Masuk".
+Pastikan muncul pesan error yang jelas di halaman login (misal: "Email atau password salah.").
+Uji login berhasil:
+Masukkan email dan password akun admin Supabase yang telah dibuat.
+Klik "Masuk".
+Halaman akan otomatis diarahkan ke http://localhost:3000/admin
+.
+Uji tombol keluar:
+Di halaman admin, klik tombol "Keluar" pada navigasi atas.
+Sesi akan diakhiri dan halaman kembali ke http://localhost:3000/admin/login
+.
 
 **Perbaikan:**
 
 ## US-05 Ganti password
 
 **Prompt:**
+Baca docs/user-stories.md bagian US-05.
+
+Buat Server Action ganti password di app/admin/actions.js untuk admin yang sedang login, memakai Supabase Auth. Validasi di server: password baru minimal 8 karakter dan harus sama dengan konfirmasi. Tampilkan pesan berhasil atau pesan error yang jelas di halaman. Sambungkan ke form di app/admin/password/page.jsx tanpa mengubah tampilannya. Hapus CatatanBelumAktif dari halaman ini.
 
 **Hasil:**
 
