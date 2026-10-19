@@ -12,14 +12,26 @@ Ubah app/page.jsx supaya daftar produk diambil dari tabel "produk" di Supabase, 
 Tampilkan produk dengan komponen KartuProduk yang sudah ada, tanpa mengubah tampilannya. Kalau gagal mengambil data, tampilkan pesan error yang jelas di halaman. Kalau tabel kosong, tampilkan tulisan "Belum ada produk". Hapus CatatanBelumAktif dari halaman ini.*
 
 **Hasil:**
+Jalankan server lokal:
+powershell
+npm run dev
+Buka browser di http://localhost:3000
+.
+Pastikan daftar produk berhasil muncul dari database Supabase (6 produk awal: Kopi, Keripik, Sambal, Nastar, Tas, dan Batik) lengkap dengan foto, kategori, nama, dan harga dalam format rupiah.
+Pastikan komponen peringatan CatatanBelumAktif sudah tidak ada di halaman depan.
+Untuk menguji kondisi error, kamu bisa sementara mengubah salah satu huruf pada SUPABASE_SECRET_KEY di .env.local lalu refresh halaman (akan muncul pesan error yang jelas di halaman).
 
 **Perbaikan:**
 
 ## US-02 Detail produk
 
 **Prompt:**
+Baca docs/user-stories.md bagian US-02.
+
+Ubah app/produk/[id]/page.jsx supaya mengambil satu produk dari tabel "produk" di Supabase berdasarkan id di URL, di sisi server, memakai koneksi Supabase yang sudah dibuat di lib/supabase. Kalau produk tidak ditemukan, panggil notFound(). Jangan ubah tampilannya. Hapus CatatanBelumAktif dari halaman ini, tapi biarkan tombol WhatsApp.
 
 **Hasil:**
+
 
 **Perbaikan:**
 
