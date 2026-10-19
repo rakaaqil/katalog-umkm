@@ -31,9 +31,6 @@ Baca docs/user-stories.md bagian US-02.
 Ubah app/produk/[id]/page.jsx supaya mengambil satu produk dari tabel "produk" di Supabase berdasarkan id di URL, di sisi server, memakai koneksi Supabase yang sudah dibuat di lib/supabase. Kalau produk tidak ditemukan, panggil notFound(). Jangan ubah tampilannya. Hapus CatatanBelumAktif dari halaman ini, tapi biarkan tombol WhatsApp.
 
 **Hasil:**
-Jalankan server lokal:
-powershell
-npm run dev
 Uji produk yang ada:
 Buka halaman katalog di http://localhost:3000
  lalu klik salah satu kartu produk (misalnya produk ID 1 ke http://localhost:3000/produk/1
@@ -55,12 +52,19 @@ Baca docs/rancangan-teknis.md bagian "Pesan WhatsApp (US-03)".
 Ubah components/TombolWhatsApp.jsx menjadi tautan yang membuka https://wa.me/ ke nomor di lib/toko.js, dengan pesan otomatis berisi nama dan harga produk dalam format rupiah. Pesan di-encode dengan encodeURIComponent dan dibuka di tab baru. Pertahankan tampilan tombolnya. Hapus CatatanBelumAktif yang menyebut US-03 di halaman detail produk.
 
 **Hasil:**
+Buka salah satu halaman produk, misalnya http://localhost:3000/produk/1
+.
+Klik tombol "Pesan via WhatsApp".
+Periksa bahwa tab baru terbuka mengarah ke URL https://wa.me/6281266971280?text=... dengan pesan otomatis yang sudah terisi nama dan harga produk (misal: "Halo, saya ingin memesan Kopi Bubuk Robusta 250 g seharga Rp 45.000.").
 
 **Perbaikan:**
 
 ## US-04 Login admin
 
 **Prompt:**
+Baca AGENTS.md bagian aturan keamanan dan docs/user-stories.md bagian US-04.
+
+Buat login admin memakai Supabase Auth (email dan password) dengan @supabase/ssr dan cookie, memakai SUPABASE_URL dan SUPABASE_PUBLISHABLE_KEY. Login diproses dengan Server Action di app/admin/actions.js dan disambungkan ke form di app/admin/login/page.jsx. Login berhasil diarahkan ke /admin; login gagal menampilkan pesan error yang jelas di halaman login. Buat juga tombol "Keluar" di components/NavAdmin.jsx berfungsi: mengakhiri sesi lalu kembali ke /admin/login. Jangan ubah tampilan. Hapus CatatanBelumAktif dari halaman login.
 
 **Hasil:**
 
